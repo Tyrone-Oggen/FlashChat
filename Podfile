@@ -7,6 +7,7 @@ target 'Flash Chat' do
   pod 'CLTypingLabel'
   
   # Firebase related pods
+  inhibit_all_warnings!
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
 end
