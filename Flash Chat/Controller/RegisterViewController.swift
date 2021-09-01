@@ -21,7 +21,7 @@ class RegisterViewController: UIViewController {
                     //localizedDescription is used to translate it to the user's selected language
                     print(e.localizedDescription)
                 } else {
-                    self.performSegue(withIdentifier: Constants.registerToChatSegue, sender: self)
+                    self.performSegue(withIdentifier: K.registerToChatSegue, sender: self)
                 }
             }
         }

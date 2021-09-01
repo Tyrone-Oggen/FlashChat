@@ -16,6 +16,6 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        titleLabel.text = Constants.appName
+        titleLabel.text = K.appName
     }
 }

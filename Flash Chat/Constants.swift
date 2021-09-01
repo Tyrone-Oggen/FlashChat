@@ -6,7 +6,7 @@
 //  Copyright © 2021 Angela Yu. All rights reserved.
 //
 
-struct Constants {
+struct K {
     static let appName = "⚡️FlashChat"
     static let cellIdentifier = "ReusableCell"
     static let cellNibName = "MessageCell"
