@@ -20,6 +20,8 @@
 		8A53FDEF26DF8C4A00E85B4E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A53FDEE26DF8C4A00E85B4E /* GoogleService-Info.plist */; };
 		8A9A8D3B26DFE20F00908127 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8D3A26DFE20F00908127 /* Constants.swift */; };
 		8A9A8D3D26DFED8200908127 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8D3C26DFED8200908127 /* Message.swift */; };
+		8A9A8D4126DFFEAD00908127 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9A8D3F26DFFEAD00908127 /* MessageCell.swift */; };
+		8A9A8D4226DFFEAD00908127 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9A8D4026DFFEAD00908127 /* MessageCell.xib */; };
 		8ED1EF563671897FF0BD4850 /* Pods_Flash_Chat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 239D7333AFC4141E9A6D7F42 /* Pods_Flash_Chat.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,8 @@
 		8A53FDEE26DF8C4A00E85B4E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8A9A8D3A26DFE20F00908127 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8A9A8D3C26DFED8200908127 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		8A9A8D3F26DFFEAD00908127 /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		8A9A8D4026DFFEAD00908127 /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		AAB825CBD77519B1BF7AEEF6 /* Pods-Flash Chat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flash Chat.release.xcconfig"; path = "Target Support Files/Pods-Flash Chat/Pods-Flash Chat.release.xcconfig"; sourceTree = "<group>"; };
 		EF650E664A816C5961338BA3 /* Pods-Flash Chat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Flash Chat.debug.xcconfig"; path = "Target Support Files/Pods-Flash Chat/Pods-Flash Chat.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,6 +110,7 @@
 		0B628193235DF03400E35CAF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8A9A8D3E26DFFE5100908127 /* MessageCell */,
 				0B62817C235DEE8100E35CAF /* Main.storyboard */,
 			);
 			path = View;
@@ -118,6 +123,15 @@
 				AAB825CBD77519B1BF7AEEF6 /* Pods-Flash Chat.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		8A9A8D3E26DFFE5100908127 /* MessageCell */ = {
+			isa = PBXGroup;
+			children = (
+				8A9A8D3F26DFFEAD00908127 /* MessageCell.swift */,
+				8A9A8D4026DFFEAD00908127 /* MessageCell.xib */,
+			);
+			path = MessageCell;
 			sourceTree = "<group>";
 		};
 		8AC798FA26DEBDCC008701BC /* Model */ = {
@@ -197,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B628183235DEE8400E35CAF /* LaunchScreen.storyboard in Resources */,
+				8A9A8D4226DFFEAD00908127 /* MessageCell.xib in Resources */,
 				0B628180235DEE8400E35CAF /* Assets.xcassets in Resources */,
 				8A53FDEF26DF8C4A00E85B4E /* GoogleService-Info.plist in Resources */,
 				0B62819E235F0F4D00E35CAF /* README.md in Resources */,
@@ -261,6 +276,7 @@
 				8A9A8D3D26DFED8200908127 /* Message.swift in Sources */,
 				0B628191235DF01B00E35CAF /* ChatViewController.swift in Sources */,
 				0B62818D235DF00B00E35CAF /* RegisterViewController.swift in Sources */,
+				8A9A8D4126DFFEAD00908127 /* MessageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
