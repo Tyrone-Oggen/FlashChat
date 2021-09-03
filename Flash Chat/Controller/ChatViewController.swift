@@ -44,7 +44,19 @@ class ChatViewController: UIViewController {
             } else {
                 if let snapshotDocuments = querySnapshot?.documents {
                     for doc in snapshotDocuments {
-                        print(doc.data())
+                        let data = doc.data()
+                        
+                        //To cater for Firestore returning Any? we will downcast it as a String
+                        if let messageSender = data[K.FStore.senderField] as? String, let messageBody = data[K.FStore.bodyField] as? String {
+                            //We create a new message object from the data that is fetch and append it to the array that the tableView is reading it from
+                            let newMessage = Message(sender: messageSender, messageBody: messageBody)
+                            self.messages.append(newMessage)
+                            
+                            //To cater for the table cells possibly not loading in time we do the following
+                            DispatchQueue.main.async {
+                                self.tableView.reloadData()
+                            }
+                        }
                     }
                 }
             }
