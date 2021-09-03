@@ -14,6 +14,8 @@ class ChatViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var messageTextfield: UITextField!
     
+    let db = Firestore.firestore()
+    
     var messages: [Message] = [
         Message(sender: "1@2.com", messageBody: "Hey"),
         Message(sender: "a@b.com", messageBody: "Hello!"),
@@ -23,14 +25,44 @@ class ChatViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        messageTextfield.delegate = self
+        
         navigationItem.hidesBackButton = true
         
         tableView.dataSource = self
         
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
+        
+        loadMessages()
+    }
+    
+    func loadMessages() {
+        messages = []
+        db.collection(K.FStore.collectionName).getDocuments { querySnapshot, error in
+            if let e = error {
+                print("There was an issue retrieving data to firestore, \(e)")
+            } else {
+                if let snapshotDocuments = querySnapshot?.documents {
+                    for doc in snapshotDocuments {
+                        print(doc.data())
+                    }
+                }
+            }
+        }
     }
     
     @IBAction func sendPressed(_ sender: UIButton) {
+        if let messageBody = messageTextfield.text,
+           let messageSender = Auth.auth().currentUser?.email {
+            db.collection(K.FStore.collectionName).addDocument(data: [K.FStore.senderField: messageSender,
+                                                                      K.FStore.bodyField: messageBody]) { error in
+                if let e = error {
+                    print("There was an issue saving data to firestore, \(e)")
+                } else {
+                    print("Successfully saved data.")
+                }
+            }
+        }
     }
     
     @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
@@ -56,3 +88,9 @@ extension ChatViewController: UITableViewDataSource {
     }
 }
  
+extension ChatViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        messageTextfield.endEditing(true)
+        return true
+    }
+}
