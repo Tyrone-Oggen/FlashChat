@@ -17,6 +17,11 @@ class WelcomeViewController: UIViewController {
         navigationController?.isNavigationBarHidden = true
     }
     
+    //For when you're about to leave the screen and want to show the navigation bar again
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.isNavigationBarHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
