@@ -55,6 +55,9 @@ class ChatViewController: UIViewController {
                             //To cater for the table cells possibly not loading in time we do the following
                             DispatchQueue.main.async {
                                 self.tableView.reloadData()
+                                //Count -1 to cater for the array numbering and section set to 0 since there is only one section
+                                let indexPath = IndexPath(row: self.messages.count - 1, section: 0)
+                                self.tableView.scrollToRow(at: indexPath, at: .top, animated: false)
                             }
                         }
                     }
@@ -78,6 +81,8 @@ class ChatViewController: UIViewController {
                 }
             }
         }
+        
+        
     }
     
     @IBAction func logOutButtonPressed(_ sender: UIBarButtonItem) {
@@ -122,8 +127,4 @@ extension ChatViewController: UITableViewDataSource {
 }
  
 extension ChatViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        messageTextfield.endEditing(true)
-        return true
-    }
 }
