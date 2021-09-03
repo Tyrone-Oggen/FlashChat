@@ -14,11 +14,13 @@ class WelcomeViewController: UIViewController {
     @IBOutlet weak var titleLabel: CLTypingLabel!
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
     }
     
     //For when you're about to leave the screen and want to show the navigation bar again
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         navigationController?.isNavigationBarHidden = false
     }
     
