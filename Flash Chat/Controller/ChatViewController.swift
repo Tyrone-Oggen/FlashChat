@@ -16,11 +16,7 @@ class ChatViewController: UIViewController {
     
     let db = Firestore.firestore()
     
-    var messages: [Message] = [
-        Message(sender: "1@2.com", messageBody: "Hey"),
-        Message(sender: "a@b.com", messageBody: "Hello!"),
-        Message(sender: "1@2.com", messageBody: "You good?"),
-    ]
+    var messages: [Message] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,11 +33,13 @@ class ChatViewController: UIViewController {
     }
     
     func loadMessages() {
-        messages = []
-        db.collection(K.FStore.collectionName).getDocuments { querySnapshot, error in
+        
+        //.getDocuments replaced with .addSnapShot listener to listen for message updated
+        db.collection(K.FStore.collectionName).addSnapshotListener { querySnapshot, error in
             if let e = error {
                 print("There was an issue retrieving data to firestore, \(e)")
             } else {
+                self.messages = []
                 if let snapshotDocuments = querySnapshot?.documents {
                     for doc in snapshotDocuments {
                         let data = doc.data()
